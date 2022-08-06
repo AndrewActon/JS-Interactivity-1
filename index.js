@@ -18,16 +18,25 @@ function addMovie(e){
 
 function deleteMovie(e){
     e.target.parentNode.remove()
-    message.textContent = 'Movie deleted!'
+    message.textContent =  `${e.target.parentNode.textContent} deleted!`
+    revealMessage()
 }
 
 function crossOfMovie (e){
     e.target.classList.toggle('checked')
     if(e.target.classList.contains('checked')){
-        message.textContent = 'Movie watched!'
+        message.textContent = `${e.target.textContent} watched!`
     } else {
-        message.textContent = 'Movie added back!'
+        message.textContent = `${e.target.textContent} added back!`
     }
+    revealMessage()
 }
 
 document.querySelector('form').addEventListener('submit', addMovie)
+
+function revealMessage (){
+    message.className = ''
+    setTimeout(() => {
+        message.className = 'hide'
+    }, 1000)
+}
